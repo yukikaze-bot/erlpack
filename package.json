@@ -1,6 +1,6 @@
 {
 	"name": "@yukikaze-bot/erlpack",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Erlpack is a fast encoder and decoder for the Erlang Term Format (version 131) for JavaScript.",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",

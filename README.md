@@ -41,9 +41,9 @@ yarn add @yukikaze-bot/erlpack
 
 ## Usage
 
-**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { pack } = require('@yukikaze-bot/prompt')` equals `import { pack } from '@yukikaze-bot/prompt'`.
+**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { pack } = require('@yukikaze-bot/erlpack')` equals `import { pack } from '@yukikaze-bot/erlpack'`.
 
-**Note:** When using ESM syntax you can also default-import `pack` function: `import pack from '@yukikaze-bot/prompt'`.
+**Note:** When using ESM syntax you can also default-import `pack` function: `import pack from '@yukikaze-bot/erlpack'`.
 
 ### Basic Usage
 
