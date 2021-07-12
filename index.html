@@ -1,0 +1,171 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@yukikaze-bot/erlpack</title>
+	<meta name="description" content="Documentation for @yukikaze-bot/erlpack">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@yukikaze-bot/erlpack</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>@yukikaze-bot/erlpack</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<div align="center">
+					<a href="#yukikaze-boterlpack" id="yukikaze-boterlpack" style="color: inherit; text-decoration: none;">
+						<h1>@yukikaze-bot/erlpack</h1>
+					</a>
+					<p><strong>A encoder and decoder utility.</strong></p>
+					<p><a href="https://github.com/yukikaze-bot/erlpack/blob/main/LICENSE.md"><img src="https://img.shields.io/github/license/yukikaze-bot/erlpack" alt="GitHub"></a>
+						<a href="https://bundlephobia.com/result?p=@yukikaze-bot/erlpack"><img src="https://img.shields.io/bundlephobia/min/@yukikaze-bot/erlpack?logo=webpack&style=flat-square" alt="npm bundle size"></a>
+					<a href="https://www.npmjs.com/package/@yukikaze-bot/erlpack"><img src="https://img.shields.io/npm/v/@yukikaze-bot/erlpack?color=crimson&logo=npm&style=flat-square" alt="npm"></a></p>
+				</div>
+				<p><strong>Table of Contents</strong></p>
+				<ul>
+					<li><a href="#yukikaze-boterlpack">@yukikaze-bot/erlpack</a><ul>
+							<li>  <a href="#description">Description</a></li>
+							<li>  <a href="#features">Features</a></li>
+							<li>  <a href="#installation">Installation</a></li>
+							<li><a href="#usage">Usage</a><ul>
+									<li>  <a href="#basic-usage">Basic Usage</a></li>
+								</ul>
+							</li>
+							<li>  <a href="#api-documentation">API Documentation</a></li>
+						</ul>
+					</li>
+				</ul>
+				<a href="#description" id="description" style="color: inherit; text-decoration: none;">
+					<h2>Description</h2>
+				</a>
+				<p>Erlpack is a fast encoder and decoder for the Erlang Term Format (version 131) for JavaScript.</p>
+				<a href="#features" id="features" style="color: inherit; text-decoration: none;">
+					<h2>Features</h2>
+				</a>
+				<ul>
+					<li>  Written in TypeScript</li>
+					<li>  Offers CommonJS, ESM bundles</li>
+					<li>  Fully tested</li>
+					<li>  Powered by C++</li>
+				</ul>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<pre><code class="language-sh"><span style="color: #000000">yarn add @yukikaze-bot/erlpack</span>
+<span style="color: #008000"># npm install @yukikaze-bot/erlpack</span>
+<span style="color: #008000"># pnpm add @yukikaze-bot/erlpack</span>
+</code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<p><strong>Note:</strong> While this section uses <code>require</code>, the imports match 1:1 with ESM imports. For example <code>const { pack } = require(&#39;@yukikaze-bot/prompt&#39;)</code> equals <code>import { pack } from &#39;@yukikaze-bot/prompt&#39;</code>.</p>
+				<p><strong>Note:</strong> When using ESM syntax you can also default-import <code>pack</code> function: <code>import pack from &#39;@yukikaze-bot/prompt&#39;</code>.</p>
+				<a href="#basic-usage" id="basic-usage" style="color: inherit; text-decoration: none;">
+					<h3>Basic Usage</h3>
+				</a>
+				<pre><code class="language-ts"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">pack</span><span style="color: #000000">, </span><span style="color: #0070C1">unpack</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@yukikaze-bot/erlpack&#039;</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">packed</span><span style="color: #000000"> = </span><span style="color: #795E26">pack</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Hello, World!&#039;</span><span style="color: #000000">);</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #795E26">unpack</span><span style="color: #000000">(</span><span style="color: #001080">packed</span><span style="color: #000000">));</span>
+</code></pre>
+				<hr>
+				<a href="#api-documentation" id="api-documentation" style="color: inherit; text-decoration: none;">
+					<h2>API Documentation</h2>
+				</a>
+				<p>For the full API documentation please refer to the TypeDoc generated <a href="https://yukikaze-bot.github.io/erlpack">documentation</a>.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/pack.html">pack</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-reference">
+						<a href="modules.html#default" class="tsd-kind-icon">default</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/WithPackCustom.html" class="tsd-kind-icon">With<wbr>Pack<wbr>Custom</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#Packable" class="tsd-kind-icon">Packable</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#pack" class="tsd-kind-icon">pack</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="modules.html#unpack" class="tsd-kind-icon">unpack</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
