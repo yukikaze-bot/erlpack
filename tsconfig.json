@@ -1,0 +1,11 @@
+{
+	"extends": "@sapphire/ts-config",
+	"compilerOptions": {
+		"target": "ES2020",
+		"baseUrl": ".",
+		"rootDir": "src",
+		"outDir": "dist",
+		"typeRoots": ["./types", "./node_modules/@types"]
+	},
+	"exclude": ["**/*.test.ts", "dist/**/*", "node_modules/**/*"]
+}

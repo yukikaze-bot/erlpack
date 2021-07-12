@@ -1,0 +1,88 @@
+{
+	"name": "@yukikaze-bot/erlpack",
+	"version": "1.0.0",
+	"description": "Erlpack is a fast encoder and decoder for the Erlang Term Format (version 131) for JavaScript.",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		"require": "./dist/index.js",
+		"import": "./dist/index.mjs"
+	},
+	"scripts": {
+		"test": "jest",
+		"test:ci": "jest --verbose --no-stack-trace",
+		"lint": "eslint . --fix",
+		"prettier": "prettier . --write",
+		"pre-build": "run-s gyp:configure",
+		"build": "run-p ts:build gyp:build",
+		"post-build": "gen-esm-wrapper dist/index.js dist/index.mjs",
+		"prepublishOnly": "yarn build",
+		"install": "node-pre-gyp install --fallback-to-build",
+		"ts:build": "tsc",
+		"gyp:rebuild": "node-pre-gyp rebuild",
+		"gyp:configure": "node-pre-gyp configure",
+		"gyp:build": "node-pre-gyp build",
+		"gyp:package": "node-pre-gyp package",
+		"gyp:prebuild": "node-pre-gyp configure install build package --fallback-to-build",
+		"docs": "typedoc",
+		"clean": "node scripts/clean.mjs"
+	},
+	"binary": {
+		"module_name": "erlpack",
+		"module_path": "./prebuild/{module_name}-{node_abi}-{platform}-{arch}-{libc}-{libc_version}/",
+		"host": "https://github.com/yukikaze-bot/erlpack/releases/download/",
+		"remote_path": "v{version}",
+		"package_name": "{module_name}-{node_abi}-{platform}-{arch}-{libc}-{libc_version}.tar.gz",
+		"pkg_path": "."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/yukikaze-bot/erlpack.git"
+	},
+	"keywords": [
+		"erlpack",
+		"cpp",
+		"ts"
+	],
+	"files": [
+		"lib",
+		"vendor",
+		"cpp",
+		"dist",
+		"binding.gyp"
+	],
+	"author": "Yoshida Tomio <https://tomio.codes>",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/yukikaze-bot/erlpack/issues"
+	},
+	"homepage": "https://github.com/yukikaze-bot/erlpack#readme",
+	"dependencies": {
+		"@mapbox/node-pre-gyp": "^1.0.5",
+		"node-addon-api": "^4.0.0"
+	},
+	"devDependencies": {
+		"@sapphire/eslint-config": "^3.2.2",
+		"@sapphire/prettier-config": "^1.1.6",
+		"@sapphire/ts-config": "^2.3.2",
+		"@swc/jest": "^0.1.3",
+		"@types/eslint": "^7",
+		"@types/jest": "^26.0.24",
+		"@types/node": "^16.3.1",
+		"@types/prettier": "^2",
+		"eslint": "^7.30.0",
+		"gen-esm-wrapper": "^1.1.2",
+		"jest": "^27.0.6",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^2.3.2",
+		"typedoc": "^0.21.4",
+		"typedoc-plugin-nojekyll": "^1.0.1",
+		"typescript": "^4.3.5"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"prettier": "@sapphire/prettier-config",
+	"gypFile": true
+}

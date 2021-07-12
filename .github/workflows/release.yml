@@ -1,0 +1,95 @@
+name: Release Updater
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  Prebuilds:
+    name: Publish Binaries
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node: [12, 14, 15, 16]
+        os: [ubuntu-18.04, ubuntu-20.04, macos-latest, windows-latest]
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+      - name: Use Node.js v${{ matrix.node }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Restore CI Cache
+        uses: actions/cache@v2.1.6
+        id: cache-restore
+        with:
+          path: node_modules
+          key: ${{ matrix.os }}-${{ matrix.node }}-${{ hashFiles(matrix.os == 'windows-latest' && '**\yarn.lock' || '**/yarn.lock') }}
+
+      - name: Install Dependencies if Cache Miss
+        if: ${{ !steps.cache-restore.outputs.cache-hit }}
+        run: yarn --immutable
+
+      - name: Build and package code
+        run: yarn gyp:prebuild
+
+      - name: Store prebuild
+        uses: actions/upload-artifact@v2
+        with:
+          name: prebuilt-${{ matrix.os }}-${{ matrix.node }}.tar.gz
+          path: build/stage/**/*.tar.gz
+          if-no-files-found: error
+
+      - name: Publish Binaries
+        uses: icrawl/action-artifact@v2.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          path: 'build/stage/**/*.tar.gz'
+
+  PrebuildMusl:
+    name: Publish Musl Binary
+    runs-on: ubuntu-latest
+    container:
+      image: node:${{ matrix.node }}-alpine
+    strategy:
+      matrix:
+        node: [12, 14, 15, 16]
+    steps:
+      - name: Setup env with Node v${{ matrix.node }}
+        run: |
+          apk add --update
+          apk add --no-cache ca-certificates git curl build-base python3 g++ make
+
+      - name: Checkout Project
+        uses: actions/checkout@v2
+
+      - name: Restore CI Cache
+        uses: actions/cache@v2.1.6
+        id: cache-restore
+        with:
+          path: node_modules
+          key: musl-${{ matrix.node }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install Dependencies if Cache Miss
+        if: ${{ !steps.cache-restore.outputs.cache-hit }}
+        run: yarn --immutable
+
+      - name: Build and package code
+        run: yarn gyp:prebuild
+
+      - name: Store prebuild
+        uses: actions/upload-artifact@v2
+        with:
+          name: prebuilt-musl-${{ matrix.node }}.tar.gz
+          path: build/stage/**/*.tar.gz
+          if-no-files-found: error
+
+      - name: Publish Binaries
+        uses: icrawl/action-artifact@v2.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          path: 'build/stage/**/*.tar.gz'

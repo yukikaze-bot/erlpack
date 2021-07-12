@@ -9,6 +9,16 @@ lerna-debug.log*
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
+# Generated files
+prebuild
+build
+docs
+
+# Yarn 2
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+
 # Runtime data
 pids
 *.pid
